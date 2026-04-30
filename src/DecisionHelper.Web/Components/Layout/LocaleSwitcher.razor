@@ -1,0 +1,13 @@
+@using DecisionHelper.Core.Localization
+@using DecisionHelper.Web.Auth
+@inject ICurrentUserAccessor CurrentUser
+
+<select class="text-sm bg-transparent border border-zinc-300 rounded px-1 py-0.5"
+        onchange="window.location.href='/api/locale/'+this.value">
+    @foreach (var locale in SupportedLocales.All)
+    {
+        var displayName = SupportedLocales.DisplayNames[locale];
+        var isSelected = locale == CurrentUser.Locale;
+        <option value="@locale" selected="@isSelected">@displayName</option>
+    }
+</select>

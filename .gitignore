@@ -1,0 +1,35 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# .NET build
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Dd]ebug/
+[Rr]elease/
+*.user
+*.suo
+.vs/
+.vscode/
+.idea/
+*.swp
+
+# Node / Tailwind build
+node_modules/
+dist/
+
+# Tailwind output (generated)
+src/DecisionHelper.Web/wwwroot/app.css
+
+# Test results
+[Tt]est[Rr]esult*/
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db

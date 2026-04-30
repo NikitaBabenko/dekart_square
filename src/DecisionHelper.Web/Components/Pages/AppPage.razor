@@ -1,0 +1,94 @@
+@page "/app"
+@rendermode InteractiveServer
+@using DecisionHelper.Core.Domain
+@using DecisionHelper.Core.Localization
+@using DecisionHelper.Web.Auth
+@using DecisionHelper.Web.Services
+@inject ICurrentUserAccessor CurrentUser
+@inject DecisionService Decisions
+@inject IStringResolver T
+
+<PageTitle>@T[Strings.AppTitle, CurrentUser.Locale]</PageTitle>
+
+<div class="py-6">
+    <h1 class="text-2xl font-bold mb-2">@T[Strings.AppTitle, CurrentUser.Locale]</h1>
+    <p class="text-zinc-600 mb-4 text-sm">@T[Strings.AppTagline, CurrentUser.Locale]</p>
+
+    <textarea @bind="_dilemma" rows="4"
+              class="w-full border border-zinc-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-zinc-900"
+              placeholder="@T[Strings.DilemmaPlaceholder, CurrentUser.Locale]"></textarea>
+
+    <div class="mt-3 flex items-center gap-3">
+        <button @onclick="Submit" disabled="@_busy"
+                class="bg-zinc-900 text-white px-5 py-2 rounded-md disabled:opacity-50 hover:bg-zinc-800">
+            @(_busy ? T[Strings.Working, CurrentUser.Locale] : T[Strings.DilemmaSubmit, CurrentUser.Locale])
+        </button>
+        @if (_error is not null)
+        {
+            <span class="text-sm text-rose-600">@_error</span>
+        }
+    </div>
+
+    @if (_square is not null)
+    {
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Quadrant Title="@T[Strings.Q1Title, CurrentUser.Locale]" Items="_square.ProsOfDoing" Tone="emerald" />
+            <Quadrant Title="@T[Strings.Q2Title, CurrentUser.Locale]" Items="_square.ConsOfDoing" Tone="rose" />
+            <Quadrant Title="@T[Strings.Q3Title, CurrentUser.Locale]" Items="_square.ProsOfNotDoing" Tone="emerald" />
+            <Quadrant Title="@T[Strings.Q4Title, CurrentUser.Locale]" Items="_square.ConsOfNotDoing" Tone="rose" />
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(_square.Summary))
+        {
+            <div class="mt-6 border border-zinc-200 rounded-lg p-4 bg-white">
+                <h3 class="font-semibold mb-2">@T[Strings.SummaryHeader, CurrentUser.Locale]</h3>
+                <p class="text-zinc-700 text-sm whitespace-pre-line">@_square.Summary</p>
+            </div>
+        }
+        @if (!string.IsNullOrWhiteSpace(_square.Recommendation))
+        {
+            <div class="mt-3 border border-zinc-300 rounded-lg p-4 bg-zinc-50">
+                <h3 class="font-semibold mb-2">@T[Strings.RecommendationHeader, CurrentUser.Locale]</h3>
+                <p class="text-zinc-800 text-sm">@_square.Recommendation</p>
+            </div>
+        }
+    }
+</div>
+
+@code {
+    private string _dilemma = string.Empty;
+    private bool _busy;
+    private string? _error;
+    private DecartesSquare? _square;
+
+    private async Task Submit()
+    {
+        _error = null;
+        if (string.IsNullOrWhiteSpace(_dilemma))
+        {
+            _error = T[Strings.DilemmaEmpty, CurrentUser.Locale];
+            return;
+        }
+
+        _busy = true;
+        StateHasChanged();
+        try
+        {
+            var user = await CurrentUser.GetOrCreateAsync(default);
+            var outcome = await Decisions.AnalyzeAsync(user, _dilemma.Trim(), CurrentUser.Locale, default);
+            if (!outcome.Allowed || outcome.Square is null)
+            {
+                _error = outcome.ErrorMessage;
+                _square = null;
+            }
+            else
+            {
+                _square = outcome.Square;
+            }
+        }
+        finally
+        {
+            _busy = false;
+        }
+    }
+}

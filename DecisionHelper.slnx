@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/DecisionHelper.Core/DecisionHelper.Core.csproj" />
+    <Project Path="src/DecisionHelper.Infrastructure/DecisionHelper.Infrastructure.csproj" />
+    <Project Path="src/DecisionHelper.Web/DecisionHelper.Web.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/DecisionHelper.Tests/DecisionHelper.Tests.csproj" />
+  </Folder>
+</Solution>

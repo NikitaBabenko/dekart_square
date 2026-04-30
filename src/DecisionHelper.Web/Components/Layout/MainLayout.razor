@@ -1,0 +1,35 @@
+@inherits LayoutComponentBase
+@using DecisionHelper.Core.Localization
+@using DecisionHelper.Web.Auth
+@inject ICurrentUserAccessor CurrentUser
+@inject IStringResolver T
+
+<div class="min-h-screen flex flex-col">
+    <header class="border-b border-zinc-200 bg-white">
+        <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="/" class="font-semibold text-zinc-900">DecisionHelper</a>
+            <nav class="flex items-center gap-4 text-sm">
+                <a href="/app" class="text-zinc-700 hover:text-zinc-900">@T[Strings.CtaTry, CurrentUser.Locale]</a>
+                <a href="/pricing" class="text-zinc-700 hover:text-zinc-900">Premium</a>
+                <LocaleSwitcher />
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-1">
+        <div class="max-w-3xl mx-auto px-4 py-6">
+            @Body
+        </div>
+    </main>
+
+    <footer class="border-t border-zinc-200 bg-white">
+        <div class="max-w-3xl mx-auto px-4 py-3 text-xs text-zinc-500 text-center">
+            DecisionHelper · @DateTime.UtcNow.Year
+        </div>
+    </footer>
+</div>
+
+<div id="blazor-error-ui" data-nosnippet class="hidden">
+    An unhandled error has occurred.
+    <a href="." class="underline">Reload</a>
+</div>

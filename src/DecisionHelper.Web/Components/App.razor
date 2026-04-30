@@ -1,0 +1,27 @@
+@using DecisionHelper.Core.Localization
+@using DecisionHelper.Web.Auth
+@inject ICurrentUserAccessor CurrentUser
+
+<!DOCTYPE html>
+<html lang="@CurrentUser.Locale" dir="@(SupportedLocales.Rtl.Contains(CurrentUser.Locale) ? "rtl" : "ltr")">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="@Assets["app.css"]" />
+    <link rel="stylesheet" href="@Assets["DecisionHelper.Web.styles.css"]" />
+    <ImportMap />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <HeadOutlet />
+</head>
+
+<body class="bg-zinc-50 text-zinc-900 antialiased">
+    <Routes />
+    <script src="_framework/blazor.web.js"></script>
+    <script src="js/tma.js"></script>
+</body>
+
+</html>
