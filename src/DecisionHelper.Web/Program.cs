@@ -30,6 +30,7 @@ var appOptions = new AppOptions
     StarsPrice = int.TryParse(builder.Configuration["STARS_PRICE"], out var sp) ? sp : 150,
     PremiumDays = int.TryParse(builder.Configuration["PREMIUM_DAYS"], out var pd) ? pd : 30,
     PostgresConnectionString = BuildPgConnectionString(builder.Configuration),
+    AdminTelegramIds = ParseAdminIds(builder.Configuration["ADMIN_TELEGRAM_IDS"]),
 };
 builder.Services.Configure<AppOptions>(o =>
 {
@@ -41,6 +42,7 @@ builder.Services.Configure<AppOptions>(o =>
     o.StarsPrice = appOptions.StarsPrice;
     o.PremiumDays = appOptions.PremiumDays;
     o.PostgresConnectionString = appOptions.PostgresConnectionString;
+    o.AdminTelegramIds = appOptions.AdminTelegramIds;
 });
 
 builder.Services.Configure<OpenRouterOptions>(o =>
@@ -94,6 +96,17 @@ app.MapAuthEndpoints();
 app.MapRazorComponents<App>().AddInteractiveServerRenderMode();
 
 app.Run();
+
+static HashSet<long> ParseAdminIds(string? raw)
+{
+    var set = new HashSet<long>();
+    if (string.IsNullOrWhiteSpace(raw)) return set;
+    foreach (var part in raw.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+    {
+        if (long.TryParse(part, out var id)) set.Add(id);
+    }
+    return set;
+}
 
 static string BuildPgConnectionString(IConfiguration cfg)
 {

@@ -10,6 +10,7 @@ public interface IUserRepository
     Task<User?> FindByIdAsync(Guid id, CancellationToken ct);
     Task UpdateLocaleAsync(Guid id, string locale, CancellationToken ct);
     Task GrantPremiumAsync(Guid id, int days, DateTimeOffset now, CancellationToken ct);
+    Task RevokePremiumDaysAsync(Guid id, int days, DateTimeOffset now, CancellationToken ct);
 }
 
 public sealed class UserRepository : IUserRepository
@@ -69,6 +70,24 @@ public sealed class UserRepository : IUserRepository
         var baseTime = user.PremiumUntil.HasValue && user.PremiumUntil.Value > now ? user.PremiumUntil.Value : now;
         user.PremiumUntil = baseTime.AddDays(days);
         user.IsPremium = true;
+        await _db.SaveChangesAsync(ct);
+    }
+
+    public async Task RevokePremiumDaysAsync(Guid id, int days, DateTimeOffset now, CancellationToken ct)
+    {
+        var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == id, ct)
+            ?? throw new InvalidOperationException($"User {id} not found.");
+        if (!user.PremiumUntil.HasValue) return;
+        var newUntil = user.PremiumUntil.Value.AddDays(-days);
+        if (newUntil <= now)
+        {
+            user.PremiumUntil = null;
+            user.IsPremium = false;
+        }
+        else
+        {
+            user.PremiumUntil = newUntil;
+        }
         await _db.SaveChangesAsync(ct);
     }
 }

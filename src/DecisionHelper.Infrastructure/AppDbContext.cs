@@ -64,6 +64,7 @@ public class AppDbContext : DbContext
             e.Property(x => x.Stars).HasColumnName("stars");
             e.Property(x => x.PremiumDays).HasColumnName("premium_days");
             e.Property(x => x.CreatedAt).HasColumnName("created_at");
+            e.Property(x => x.RefundedAt).HasColumnName("refunded_at");
             e.HasIndex(x => x.TelegramPaymentChargeId).IsUnique();
             e.HasIndex(x => x.UserId);
         });

@@ -31,6 +31,10 @@ public static class Strings
     public const string TgPremiumPaid = "tg.premium.paid";
     public const string TgError = "tg.error";
     public const string Working = "working";
+    public const string TgRefundOk = "tg.refund.ok";
+    public const string TgRefundNotFound = "tg.refund.not_found";
+    public const string TgRefundUsage = "tg.refund.usage";
+    public const string TgRefundAlready = "tg.refund.already";
 }
 
 public static class DefaultStrings
@@ -69,6 +73,10 @@ public static class DefaultStrings
                 [Strings.TgPremiumPaid] = "Premium activated. Thank you!",
                 [Strings.TgError] = "Something went wrong. Please try again later.",
                 [Strings.Working] = "Thinking…",
+                [Strings.TgRefundOk] = "Refund successful for charge {0}.",
+                [Strings.TgRefundNotFound] = "Charge {0} not found in payments table.",
+                [Strings.TgRefundUsage] = "Usage: /refund <telegram_payment_charge_id>",
+                [Strings.TgRefundAlready] = "Charge {0} was already refunded.",
             },
             ["ru"] = new Dictionary<string, string>
             {
@@ -101,6 +109,10 @@ public static class DefaultStrings
                 [Strings.TgPremiumPaid] = "Premium активирован. Спасибо!",
                 [Strings.TgError] = "Что-то пошло не так. Попробуйте позже.",
                 [Strings.Working] = "Думаю…",
+                [Strings.TgRefundOk] = "Возврат по {0} выполнен.",
+                [Strings.TgRefundNotFound] = "Платёж {0} не найден.",
+                [Strings.TgRefundUsage] = "Использование: /refund <telegram_payment_charge_id>",
+                [Strings.TgRefundAlready] = "По {0} возврат уже был сделан.",
             },
             ["es"] = new Dictionary<string, string>
             {
@@ -133,6 +145,10 @@ public static class DefaultStrings
                 [Strings.TgPremiumPaid] = "Premium activado. ¡Gracias!",
                 [Strings.TgError] = "Algo salió mal. Inténtalo más tarde.",
                 [Strings.Working] = "Pensando…",
+                [Strings.TgRefundOk] = "Reembolso del cargo {0} realizado.",
+                [Strings.TgRefundNotFound] = "Cargo {0} no encontrado.",
+                [Strings.TgRefundUsage] = "Uso: /refund <telegram_payment_charge_id>",
+                [Strings.TgRefundAlready] = "El cargo {0} ya fue reembolsado.",
             },
             ["pt"] = new Dictionary<string, string>
             {
@@ -165,6 +181,10 @@ public static class DefaultStrings
                 [Strings.TgPremiumPaid] = "Premium ativado. Obrigado!",
                 [Strings.TgError] = "Algo deu errado. Tente novamente mais tarde.",
                 [Strings.Working] = "Pensando…",
+                [Strings.TgRefundOk] = "Reembolso do pagamento {0} concluído.",
+                [Strings.TgRefundNotFound] = "Pagamento {0} não encontrado.",
+                [Strings.TgRefundUsage] = "Uso: /refund <telegram_payment_charge_id>",
+                [Strings.TgRefundAlready] = "O pagamento {0} já foi reembolsado.",
             },
             ["de"] = new Dictionary<string, string>
             {
@@ -197,6 +217,10 @@ public static class DefaultStrings
                 [Strings.TgPremiumPaid] = "Premium aktiviert. Danke!",
                 [Strings.TgError] = "Etwas ist schiefgelaufen. Bitte später erneut versuchen.",
                 [Strings.Working] = "Denke nach…",
+                [Strings.TgRefundOk] = "Rückerstattung für {0} erfolgreich.",
+                [Strings.TgRefundNotFound] = "Buchung {0} nicht gefunden.",
+                [Strings.TgRefundUsage] = "Verwendung: /refund <telegram_payment_charge_id>",
+                [Strings.TgRefundAlready] = "Buchung {0} wurde bereits erstattet.",
             },
             ["fr"] = new Dictionary<string, string>
             {
@@ -229,6 +253,10 @@ public static class DefaultStrings
                 [Strings.TgPremiumPaid] = "Premium activé. Merci !",
                 [Strings.TgError] = "Une erreur est survenue. Réessayez plus tard.",
                 [Strings.Working] = "Réflexion…",
+                [Strings.TgRefundOk] = "Remboursement effectué pour {0}.",
+                [Strings.TgRefundNotFound] = "Paiement {0} introuvable.",
+                [Strings.TgRefundUsage] = "Utilisation : /refund <telegram_payment_charge_id>",
+                [Strings.TgRefundAlready] = "Le paiement {0} a déjà été remboursé.",
             },
             ["it"] = new Dictionary<string, string>
             {
@@ -261,6 +289,10 @@ public static class DefaultStrings
                 [Strings.TgPremiumPaid] = "Premium attivato. Grazie!",
                 [Strings.TgError] = "Qualcosa è andato storto. Riprova più tardi.",
                 [Strings.Working] = "Sto pensando…",
+                [Strings.TgRefundOk] = "Rimborso completato per {0}.",
+                [Strings.TgRefundNotFound] = "Pagamento {0} non trovato.",
+                [Strings.TgRefundUsage] = "Uso: /refund <telegram_payment_charge_id>",
+                [Strings.TgRefundAlready] = "Il pagamento {0} è già stato rimborsato.",
             },
             ["tr"] = new Dictionary<string, string>
             {
@@ -293,6 +325,10 @@ public static class DefaultStrings
                 [Strings.TgPremiumPaid] = "Premium etkinleştirildi. Teşekkürler!",
                 [Strings.TgError] = "Bir şeyler ters gitti. Lütfen sonra tekrar dene.",
                 [Strings.Working] = "Düşünüyorum…",
+                [Strings.TgRefundOk] = "{0} için iade başarıyla yapıldı.",
+                [Strings.TgRefundNotFound] = "{0} ödemesi bulunamadı.",
+                [Strings.TgRefundUsage] = "Kullanım: /refund <telegram_payment_charge_id>",
+                [Strings.TgRefundAlready] = "{0} için iade zaten yapılmış.",
             },
             ["uk"] = new Dictionary<string, string>
             {
@@ -325,6 +361,10 @@ public static class DefaultStrings
                 [Strings.TgPremiumPaid] = "Premium активовано. Дякуємо!",
                 [Strings.TgError] = "Щось пішло не так. Спробуйте пізніше.",
                 [Strings.Working] = "Думаю…",
+                [Strings.TgRefundOk] = "Повернення коштів за {0} виконано.",
+                [Strings.TgRefundNotFound] = "Платіж {0} не знайдено.",
+                [Strings.TgRefundUsage] = "Використання: /refund <telegram_payment_charge_id>",
+                [Strings.TgRefundAlready] = "За {0} повернення вже зроблено.",
             },
             ["pl"] = new Dictionary<string, string>
             {
@@ -357,6 +397,10 @@ public static class DefaultStrings
                 [Strings.TgPremiumPaid] = "Premium aktywowane. Dziękujemy!",
                 [Strings.TgError] = "Coś poszło nie tak. Spróbuj ponownie później.",
                 [Strings.Working] = "Myślę…",
+                [Strings.TgRefundOk] = "Zwrot dla {0} zakończony.",
+                [Strings.TgRefundNotFound] = "Płatność {0} nie znaleziona.",
+                [Strings.TgRefundUsage] = "Użycie: /refund <telegram_payment_charge_id>",
+                [Strings.TgRefundAlready] = "Płatność {0} została już zwrócona.",
             },
             ["ar"] = new Dictionary<string, string>
             {
@@ -389,6 +433,10 @@ public static class DefaultStrings
                 [Strings.TgPremiumPaid] = "تم تفعيل Premium. شكرًا لك!",
                 [Strings.TgError] = "حدث خطأ ما. حاول لاحقًا.",
                 [Strings.Working] = "أفكّر…",
+                [Strings.TgRefundOk] = "تم استرداد المبلغ للدفعة {0} بنجاح.",
+                [Strings.TgRefundNotFound] = "الدفعة {0} غير موجودة.",
+                [Strings.TgRefundUsage] = "الاستخدام: /refund <telegram_payment_charge_id>",
+                [Strings.TgRefundAlready] = "تم استرداد الدفعة {0} مسبقًا.",
             },
             ["hi"] = new Dictionary<string, string>
             {
@@ -421,6 +469,10 @@ public static class DefaultStrings
                 [Strings.TgPremiumPaid] = "Premium सक्रिय हो गया। धन्यवाद!",
                 [Strings.TgError] = "कुछ गड़बड़ हुई। बाद में पुनः प्रयास करें।",
                 [Strings.Working] = "सोच रहा हूँ…",
+                [Strings.TgRefundOk] = "{0} के लिए रिफ़ंड सफल।",
+                [Strings.TgRefundNotFound] = "{0} भुगतान नहीं मिला।",
+                [Strings.TgRefundUsage] = "उपयोग: /refund <telegram_payment_charge_id>",
+                [Strings.TgRefundAlready] = "{0} पहले ही रिफ़ंड हो चुका है।",
             },
             ["zh"] = new Dictionary<string, string>
             {
@@ -453,6 +505,10 @@ public static class DefaultStrings
                 [Strings.TgPremiumPaid] = "Premium 已激活，感谢！",
                 [Strings.TgError] = "出错了，请稍后重试。",
                 [Strings.Working] = "思考中…",
+                [Strings.TgRefundOk] = "已成功为 {0} 退款。",
+                [Strings.TgRefundNotFound] = "未找到付款 {0}。",
+                [Strings.TgRefundUsage] = "用法：/refund <telegram_payment_charge_id>",
+                [Strings.TgRefundAlready] = "{0} 已经退过款。",
             },
             ["ja"] = new Dictionary<string, string>
             {
@@ -485,6 +541,10 @@ public static class DefaultStrings
                 [Strings.TgPremiumPaid] = "Premium を有効化しました。ありがとうございます。",
                 [Strings.TgError] = "問題が発生しました。後ほどお試しください。",
                 [Strings.Working] = "考え中…",
+                [Strings.TgRefundOk] = "{0} の返金が完了しました。",
+                [Strings.TgRefundNotFound] = "支払い {0} が見つかりません。",
+                [Strings.TgRefundUsage] = "使用方法: /refund <telegram_payment_charge_id>",
+                [Strings.TgRefundAlready] = "{0} はすでに返金済みです。",
             },
             ["ko"] = new Dictionary<string, string>
             {
@@ -517,6 +577,10 @@ public static class DefaultStrings
                 [Strings.TgPremiumPaid] = "Premium이 활성화되었어요. 감사합니다!",
                 [Strings.TgError] = "문제가 발생했어요. 잠시 후 다시 시도해 주세요.",
                 [Strings.Working] = "생각 중…",
+                [Strings.TgRefundOk] = "{0} 환불 완료.",
+                [Strings.TgRefundNotFound] = "결제 {0}을(를) 찾을 수 없어요.",
+                [Strings.TgRefundUsage] = "사용법: /refund <telegram_payment_charge_id>",
+                [Strings.TgRefundAlready] = "{0}은(는) 이미 환불되었어요.",
             },
             ["vi"] = new Dictionary<string, string>
             {
@@ -549,6 +613,10 @@ public static class DefaultStrings
                 [Strings.TgPremiumPaid] = "Đã kích hoạt Premium. Cảm ơn bạn!",
                 [Strings.TgError] = "Có gì đó sai. Vui lòng thử lại sau.",
                 [Strings.Working] = "Đang suy nghĩ…",
+                [Strings.TgRefundOk] = "Hoàn tiền {0} thành công.",
+                [Strings.TgRefundNotFound] = "Không tìm thấy thanh toán {0}.",
+                [Strings.TgRefundUsage] = "Cách dùng: /refund <telegram_payment_charge_id>",
+                [Strings.TgRefundAlready] = "{0} đã được hoàn tiền trước đó.",
             },
             ["id"] = new Dictionary<string, string>
             {
@@ -581,6 +649,10 @@ public static class DefaultStrings
                 [Strings.TgPremiumPaid] = "Premium aktif. Terima kasih!",
                 [Strings.TgError] = "Ada yang salah. Silakan coba lagi nanti.",
                 [Strings.Working] = "Sedang berpikir…",
+                [Strings.TgRefundOk] = "Pengembalian dana untuk {0} berhasil.",
+                [Strings.TgRefundNotFound] = "Pembayaran {0} tidak ditemukan.",
+                [Strings.TgRefundUsage] = "Penggunaan: /refund <telegram_payment_charge_id>",
+                [Strings.TgRefundAlready] = "Pembayaran {0} sudah dikembalikan.",
             },
             ["fa"] = new Dictionary<string, string>
             {
@@ -613,6 +685,10 @@ public static class DefaultStrings
                 [Strings.TgPremiumPaid] = "Premium فعال شد. ممنون!",
                 [Strings.TgError] = "مشکلی پیش آمد. بعداً دوباره تلاش کن.",
                 [Strings.Working] = "در حال فکر…",
+                [Strings.TgRefundOk] = "بازپرداخت برای {0} انجام شد.",
+                [Strings.TgRefundNotFound] = "پرداخت {0} پیدا نشد.",
+                [Strings.TgRefundUsage] = "استفاده: /refund <telegram_payment_charge_id>",
+                [Strings.TgRefundAlready] = "{0} پیشتر بازپرداخت شده است.",
             },
             ["nl"] = new Dictionary<string, string>
             {
@@ -645,6 +721,10 @@ public static class DefaultStrings
                 [Strings.TgPremiumPaid] = "Premium geactiveerd. Bedankt!",
                 [Strings.TgError] = "Er ging iets mis. Probeer het later opnieuw.",
                 [Strings.Working] = "Aan het denken…",
+                [Strings.TgRefundOk] = "Terugbetaling voor {0} gelukt.",
+                [Strings.TgRefundNotFound] = "Betaling {0} niet gevonden.",
+                [Strings.TgRefundUsage] = "Gebruik: /refund <telegram_payment_charge_id>",
+                [Strings.TgRefundAlready] = "Betaling {0} is al terugbetaald.",
             },
             ["sv"] = new Dictionary<string, string>
             {
@@ -677,6 +757,10 @@ public static class DefaultStrings
                 [Strings.TgPremiumPaid] = "Premium aktiverat. Tack!",
                 [Strings.TgError] = "Något gick fel. Försök igen senare.",
                 [Strings.Working] = "Tänker…",
+                [Strings.TgRefundOk] = "Återbetalning för {0} genomförd.",
+                [Strings.TgRefundNotFound] = "Betalning {0} hittades inte.",
+                [Strings.TgRefundUsage] = "Användning: /refund <telegram_payment_charge_id>",
+                [Strings.TgRefundAlready] = "Betalning {0} har redan återbetalats.",
             },
         };
 }

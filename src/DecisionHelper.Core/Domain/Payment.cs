@@ -8,4 +8,5 @@ public class Payment
     public int Stars { get; set; }
     public int PremiumDays { get; set; }
     public DateTimeOffset CreatedAt { get; set; }
+    public DateTimeOffset? RefundedAt { get; set; }
 }

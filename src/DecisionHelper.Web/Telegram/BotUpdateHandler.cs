@@ -1,5 +1,6 @@
 using DecisionHelper.Core.Domain;
 using DecisionHelper.Core.Localization;
+using AppUser = DecisionHelper.Core.Domain.User;
 using DecisionHelper.Infrastructure.Repositories;
 using DecisionHelper.Web.Auth;
 using DecisionHelper.Web.Services;
@@ -77,7 +78,9 @@ public sealed class BotUpdateHandler
 
         if (text.StartsWith('/'))
         {
-            var command = text.Split(' ', 2)[0].ToLowerInvariant();
+            var parts = text.Split(' ', 2);
+            var command = parts[0].ToLowerInvariant();
+            var argument = parts.Length > 1 ? parts[1].Trim() : string.Empty;
             switch (command)
             {
                 case "/start":
@@ -86,6 +89,9 @@ public sealed class BotUpdateHandler
                     return;
                 case "/premium":
                     await SendPremiumInvoiceAsync(message.Chat.Id, user.Locale, ct);
+                    return;
+                case "/refund":
+                    await HandleRefundAsync(message, user, argument, ct);
                     return;
                 default:
                     await _bot.SendMessage(message.Chat.Id, _strings[Strings.TgStartGreeting, user.Locale], cancellationToken: ct);
@@ -116,6 +122,58 @@ public sealed class BotUpdateHandler
 
         var rendered = TelegramRenderer.RenderSquare(outcome.Square, _strings, user.Locale);
         await _bot.SendMessage(message.Chat.Id, rendered, parseMode: ParseMode.Html, cancellationToken: ct);
+    }
+
+    private async Task HandleRefundAsync(Message message, AppUser user, string chargeId, CancellationToken ct)
+    {
+        if (message.From is null) return;
+        if (!_options.AdminTelegramIds.Contains(message.From.Id))
+        {
+            // Silently behave like an unknown command for non-admins to avoid leaking the feature.
+            await _bot.SendMessage(message.Chat.Id, _strings[Strings.TgStartGreeting, user.Locale], cancellationToken: ct);
+            return;
+        }
+
+        if (string.IsNullOrEmpty(chargeId))
+        {
+            await _bot.SendMessage(message.Chat.Id, _strings[Strings.TgRefundUsage, user.Locale], cancellationToken: ct);
+            return;
+        }
+
+        var payment = await _payments.FindByChargeIdAsync(chargeId, ct);
+        if (payment is null)
+        {
+            await _bot.SendMessage(message.Chat.Id, _strings.Format(Strings.TgRefundNotFound, user.Locale, chargeId), cancellationToken: ct);
+            return;
+        }
+
+        if (payment.RefundedAt.HasValue)
+        {
+            await _bot.SendMessage(message.Chat.Id, _strings.Format(Strings.TgRefundAlready, user.Locale, chargeId), cancellationToken: ct);
+            return;
+        }
+
+        var paidUser = await _users.FindByIdAsync(payment.UserId, ct);
+        if (paidUser?.TelegramId is null)
+        {
+            _logger.LogWarning("Cannot refund {ChargeId}: user has no TelegramId.", chargeId);
+            await _bot.SendMessage(message.Chat.Id, _strings.Format(Strings.TgRefundNotFound, user.Locale, chargeId), cancellationToken: ct);
+            return;
+        }
+
+        try
+        {
+            await _bot.RefundStarPayment(paidUser.TelegramId.Value, chargeId, cancellationToken: ct);
+            var now = DateTimeOffset.UtcNow;
+            await _payments.MarkRefundedAsync(payment.Id, now, ct);
+            await _users.RevokePremiumDaysAsync(paidUser.Id, payment.PremiumDays, now, ct);
+            await _bot.SendMessage(message.Chat.Id, _strings.Format(Strings.TgRefundOk, user.Locale, chargeId), cancellationToken: ct);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "RefundStarPayment failed for charge {ChargeId}", chargeId);
+            await _bot.SendMessage(message.Chat.Id, _strings[Strings.TgError, user.Locale], cancellationToken: ct);
+        }
     }
 
     private async Task SendPremiumInvoiceAsync(long chatId, string locale, CancellationToken ct)

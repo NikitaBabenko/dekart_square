@@ -10,4 +10,5 @@ public sealed class AppOptions
     public int StarsPrice { get; set; } = 150;
     public int PremiumDays { get; set; } = 30;
     public string PostgresConnectionString { get; set; } = string.Empty;
+    public HashSet<long> AdminTelegramIds { get; set; } = new();
 }
