@@ -93,6 +93,7 @@ app.UseAntiforgery();
 app.MapGet("/healthz", () => Results.Ok(new { ok = true }));
 app.MapTelegramWebhook();
 app.MapAuthEndpoints();
+app.MapSeoEndpoints();
 app.MapRazorComponents<App>().AddInteractiveServerRenderMode();
 
 app.Run();

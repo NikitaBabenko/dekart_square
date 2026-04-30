@@ -35,6 +35,12 @@ public static class Strings
     public const string TgRefundNotFound = "tg.refund.not_found";
     public const string TgRefundUsage = "tg.refund.usage";
     public const string TgRefundAlready = "tg.refund.already";
+    public const string SeoDescription = "seo.description";
+    public const string SeoOgImageAlt = "seo.og_image_alt";
+    public const string ErrorTitle = "error.title";
+    public const string ErrorBody = "error.body";
+    public const string ErrorCtaHome = "error.cta_home";
+    public const string ErrorConnectionLost = "error.connection_lost";
 }
 
 public static class DefaultStrings
@@ -77,6 +83,12 @@ public static class DefaultStrings
                 [Strings.TgRefundNotFound] = "Charge {0} not found in payments table.",
                 [Strings.TgRefundUsage] = "Usage: /refund <telegram_payment_charge_id>",
                 [Strings.TgRefundAlready] = "Charge {0} was already refunded.",
+                [Strings.SeoDescription] = "Get unstuck on a tough decision. The classical Cartesian Square — four reflective questions — structured by AI, in your language.",
+                [Strings.SeoOgImageAlt] = "DecisionHelper — Cartesian Square with AI",
+                [Strings.ErrorTitle] = "Something went wrong",
+                [Strings.ErrorBody] = "An error occurred while handling your request. The team has been notified.",
+                [Strings.ErrorCtaHome] = "Back to home",
+                [Strings.ErrorConnectionLost] = "Connection lost. Trying to reconnect…",
             },
             ["ru"] = new Dictionary<string, string>
             {
@@ -113,6 +125,12 @@ public static class DefaultStrings
                 [Strings.TgRefundNotFound] = "Платёж {0} не найден.",
                 [Strings.TgRefundUsage] = "Использование: /refund <telegram_payment_charge_id>",
                 [Strings.TgRefundAlready] = "По {0} возврат уже был сделан.",
+                [Strings.SeoDescription] = "Поможем разобрать трудное решение. Классический Квадрат Декарта — четыре рефлексивных вопроса — структурирует ИИ, на вашем языке.",
+                [Strings.SeoOgImageAlt] = "DecisionHelper — Квадрат Декарта с ИИ",
+                [Strings.ErrorTitle] = "Что-то пошло не так",
+                [Strings.ErrorBody] = "Произошла ошибка при обработке запроса. Команда уведомлена.",
+                [Strings.ErrorCtaHome] = "Вернуться на главную",
+                [Strings.ErrorConnectionLost] = "Соединение потеряно. Переподключаемся…",
             },
             ["es"] = new Dictionary<string, string>
             {
@@ -149,6 +167,12 @@ public static class DefaultStrings
                 [Strings.TgRefundNotFound] = "Cargo {0} no encontrado.",
                 [Strings.TgRefundUsage] = "Uso: /refund <telegram_payment_charge_id>",
                 [Strings.TgRefundAlready] = "El cargo {0} ya fue reembolsado.",
+                [Strings.SeoDescription] = "Desbloquea una decisión difícil. El clásico Cuadro de Descartes — cuatro preguntas reflexivas — estructurado por IA, en tu idioma.",
+                [Strings.SeoOgImageAlt] = "DecisionHelper — Cuadro de Descartes con IA",
+                [Strings.ErrorTitle] = "Algo salió mal",
+                [Strings.ErrorBody] = "Se produjo un error al procesar tu solicitud. El equipo ha sido notificado.",
+                [Strings.ErrorCtaHome] = "Volver al inicio",
+                [Strings.ErrorConnectionLost] = "Conexión perdida. Reconectando…",
             },
             ["pt"] = new Dictionary<string, string>
             {
@@ -185,6 +209,12 @@ public static class DefaultStrings
                 [Strings.TgRefundNotFound] = "Pagamento {0} não encontrado.",
                 [Strings.TgRefundUsage] = "Uso: /refund <telegram_payment_charge_id>",
                 [Strings.TgRefundAlready] = "O pagamento {0} já foi reembolsado.",
+                [Strings.SeoDescription] = "Saia do impasse em uma decisão difícil. O clássico Quadrado de Descartes — quatro perguntas reflexivas — estruturado pela IA, no seu idioma.",
+                [Strings.SeoOgImageAlt] = "DecisionHelper — Quadrado de Descartes com IA",
+                [Strings.ErrorTitle] = "Algo deu errado",
+                [Strings.ErrorBody] = "Ocorreu um erro ao processar sua solicitação. A equipe foi notificada.",
+                [Strings.ErrorCtaHome] = "Voltar ao início",
+                [Strings.ErrorConnectionLost] = "Conexão perdida. Reconectando…",
             },
             ["de"] = new Dictionary<string, string>
             {
@@ -221,6 +251,12 @@ public static class DefaultStrings
                 [Strings.TgRefundNotFound] = "Buchung {0} nicht gefunden.",
                 [Strings.TgRefundUsage] = "Verwendung: /refund <telegram_payment_charge_id>",
                 [Strings.TgRefundAlready] = "Buchung {0} wurde bereits erstattet.",
+                [Strings.SeoDescription] = "Komm bei einer schwierigen Entscheidung aus der Sackgasse. Das klassische Descartes-Quadrat — vier reflektierende Fragen — strukturiert durch KI, in deiner Sprache.",
+                [Strings.SeoOgImageAlt] = "DecisionHelper — Descartes-Quadrat mit KI",
+                [Strings.ErrorTitle] = "Etwas ist schiefgelaufen",
+                [Strings.ErrorBody] = "Bei der Verarbeitung deiner Anfrage ist ein Fehler aufgetreten. Das Team wurde benachrichtigt.",
+                [Strings.ErrorCtaHome] = "Zurück zur Startseite",
+                [Strings.ErrorConnectionLost] = "Verbindung verloren. Verbinde neu…",
             },
             ["fr"] = new Dictionary<string, string>
             {
@@ -257,6 +293,12 @@ public static class DefaultStrings
                 [Strings.TgRefundNotFound] = "Paiement {0} introuvable.",
                 [Strings.TgRefundUsage] = "Utilisation : /refund <telegram_payment_charge_id>",
                 [Strings.TgRefundAlready] = "Le paiement {0} a déjà été remboursé.",
+                [Strings.SeoDescription] = "Sortez de l'impasse sur une décision difficile. Le classique Carré de Descartes — quatre questions réflexives — structuré par l'IA, dans votre langue.",
+                [Strings.SeoOgImageAlt] = "DecisionHelper — Carré de Descartes avec IA",
+                [Strings.ErrorTitle] = "Une erreur est survenue",
+                [Strings.ErrorBody] = "Une erreur s'est produite lors du traitement de votre requête. L'équipe a été notifiée.",
+                [Strings.ErrorCtaHome] = "Retour à l'accueil",
+                [Strings.ErrorConnectionLost] = "Connexion perdue. Reconnexion en cours…",
             },
             ["it"] = new Dictionary<string, string>
             {
@@ -293,6 +335,12 @@ public static class DefaultStrings
                 [Strings.TgRefundNotFound] = "Pagamento {0} non trovato.",
                 [Strings.TgRefundUsage] = "Uso: /refund <telegram_payment_charge_id>",
                 [Strings.TgRefundAlready] = "Il pagamento {0} è già stato rimborsato.",
+                [Strings.SeoDescription] = "Sblocca una decisione difficile. Il classico Quadrato di Cartesio — quattro domande riflessive — strutturato dall'IA, nella tua lingua.",
+                [Strings.SeoOgImageAlt] = "DecisionHelper — Quadrato di Cartesio con IA",
+                [Strings.ErrorTitle] = "Qualcosa è andato storto",
+                [Strings.ErrorBody] = "Si è verificato un errore nell'elaborazione della tua richiesta. Il team è stato informato.",
+                [Strings.ErrorCtaHome] = "Torna alla home",
+                [Strings.ErrorConnectionLost] = "Connessione persa. Riconnessione…",
             },
             ["tr"] = new Dictionary<string, string>
             {
@@ -329,6 +377,12 @@ public static class DefaultStrings
                 [Strings.TgRefundNotFound] = "{0} ödemesi bulunamadı.",
                 [Strings.TgRefundUsage] = "Kullanım: /refund <telegram_payment_charge_id>",
                 [Strings.TgRefundAlready] = "{0} için iade zaten yapılmış.",
+                [Strings.SeoDescription] = "Zor bir karardan çık. Klasik Descartes Karesi — dört yansıtıcı soru — yapay zekâ ile yapılandırılmış, kendi dilinde.",
+                [Strings.SeoOgImageAlt] = "DecisionHelper — Yapay Zekâ ile Descartes Karesi",
+                [Strings.ErrorTitle] = "Bir şeyler ters gitti",
+                [Strings.ErrorBody] = "İsteğin işlenirken bir hata oluştu. Ekibe haber verildi.",
+                [Strings.ErrorCtaHome] = "Ana sayfaya dön",
+                [Strings.ErrorConnectionLost] = "Bağlantı koptu. Yeniden bağlanıyoruz…",
             },
             ["uk"] = new Dictionary<string, string>
             {
@@ -365,6 +419,12 @@ public static class DefaultStrings
                 [Strings.TgRefundNotFound] = "Платіж {0} не знайдено.",
                 [Strings.TgRefundUsage] = "Використання: /refund <telegram_payment_charge_id>",
                 [Strings.TgRefundAlready] = "За {0} повернення вже зроблено.",
+                [Strings.SeoDescription] = "Розберіть складне рішення. Класичний Квадрат Декарта — чотири рефлексивні питання — структурує ШІ вашою мовою.",
+                [Strings.SeoOgImageAlt] = "DecisionHelper — Квадрат Декарта з ШІ",
+                [Strings.ErrorTitle] = "Щось пішло не так",
+                [Strings.ErrorBody] = "Сталася помилка під час обробки запиту. Команду повідомлено.",
+                [Strings.ErrorCtaHome] = "Повернутися на головну",
+                [Strings.ErrorConnectionLost] = "З'єднання втрачено. Перепідключаємось…",
             },
             ["pl"] = new Dictionary<string, string>
             {
@@ -401,6 +461,12 @@ public static class DefaultStrings
                 [Strings.TgRefundNotFound] = "Płatność {0} nie znaleziona.",
                 [Strings.TgRefundUsage] = "Użycie: /refund <telegram_payment_charge_id>",
                 [Strings.TgRefundAlready] = "Płatność {0} została już zwrócona.",
+                [Strings.SeoDescription] = "Rusz z miejsca w trudnej decyzji. Klasyczny Kwadrat Kartezjusza — cztery refleksyjne pytania — uporządkowane przez SI, w twoim języku.",
+                [Strings.SeoOgImageAlt] = "DecisionHelper — Kwadrat Kartezjusza z SI",
+                [Strings.ErrorTitle] = "Coś poszło nie tak",
+                [Strings.ErrorBody] = "Wystąpił błąd podczas obsługi żądania. Zespół został powiadomiony.",
+                [Strings.ErrorCtaHome] = "Powrót do strony głównej",
+                [Strings.ErrorConnectionLost] = "Utracono połączenie. Łączymy ponownie…",
             },
             ["ar"] = new Dictionary<string, string>
             {
@@ -437,6 +503,12 @@ public static class DefaultStrings
                 [Strings.TgRefundNotFound] = "الدفعة {0} غير موجودة.",
                 [Strings.TgRefundUsage] = "الاستخدام: /refund <telegram_payment_charge_id>",
                 [Strings.TgRefundAlready] = "تم استرداد الدفعة {0} مسبقًا.",
+                [Strings.SeoDescription] = "اخرج من قرار صعب. مربع ديكارت الكلاسيكي — أربعة أسئلة تأمليّة — منظَّمة بالذكاء الاصطناعي، بلغتك.",
+                [Strings.SeoOgImageAlt] = "DecisionHelper — مربع ديكارت بالذكاء الاصطناعي",
+                [Strings.ErrorTitle] = "حدث خطأ ما",
+                [Strings.ErrorBody] = "حدث خطأ أثناء معالجة طلبك. تم إبلاغ الفريق.",
+                [Strings.ErrorCtaHome] = "العودة إلى الرئيسية",
+                [Strings.ErrorConnectionLost] = "انقطع الاتصال. جارٍ إعادة الاتصال…",
             },
             ["hi"] = new Dictionary<string, string>
             {
@@ -473,6 +545,12 @@ public static class DefaultStrings
                 [Strings.TgRefundNotFound] = "{0} भुगतान नहीं मिला।",
                 [Strings.TgRefundUsage] = "उपयोग: /refund <telegram_payment_charge_id>",
                 [Strings.TgRefundAlready] = "{0} पहले ही रिफ़ंड हो चुका है।",
+                [Strings.SeoDescription] = "कठिन निर्णय से बाहर निकलें। पारंपरिक कार्तीय वर्ग — चार चिंतनशील प्रश्न — आपकी भाषा में AI द्वारा संरचित।",
+                [Strings.SeoOgImageAlt] = "DecisionHelper — AI के साथ कार्तीय वर्ग",
+                [Strings.ErrorTitle] = "कुछ गड़बड़ हुई",
+                [Strings.ErrorBody] = "अनुरोध संभालते समय त्रुटि हुई। टीम को सूचित कर दिया गया है।",
+                [Strings.ErrorCtaHome] = "होम पर लौटें",
+                [Strings.ErrorConnectionLost] = "कनेक्शन टूट गया। फिर से जुड़ रहे हैं…",
             },
             ["zh"] = new Dictionary<string, string>
             {
@@ -509,6 +587,12 @@ public static class DefaultStrings
                 [Strings.TgRefundNotFound] = "未找到付款 {0}。",
                 [Strings.TgRefundUsage] = "用法：/refund <telegram_payment_charge_id>",
                 [Strings.TgRefundAlready] = "{0} 已经退过款。",
+                [Strings.SeoDescription] = "走出艰难抉择。经典的笛卡尔方阵——四个反思问题——由 AI 用你的语言结构化整理。",
+                [Strings.SeoOgImageAlt] = "DecisionHelper — AI 笛卡尔方阵",
+                [Strings.ErrorTitle] = "出错了",
+                [Strings.ErrorBody] = "处理请求时出错，团队已收到通知。",
+                [Strings.ErrorCtaHome] = "回到首页",
+                [Strings.ErrorConnectionLost] = "连接已断开，正在重新连接……",
             },
             ["ja"] = new Dictionary<string, string>
             {
@@ -545,6 +629,12 @@ public static class DefaultStrings
                 [Strings.TgRefundNotFound] = "支払い {0} が見つかりません。",
                 [Strings.TgRefundUsage] = "使用方法: /refund <telegram_payment_charge_id>",
                 [Strings.TgRefundAlready] = "{0} はすでに返金済みです。",
+                [Strings.SeoDescription] = "難しい決断の迷いを抜け出す。古典的なデカルトの正方形の4つの問いを、AI があなたの言語で整理します。",
+                [Strings.SeoOgImageAlt] = "DecisionHelper — AI で考えるデカルトの正方形",
+                [Strings.ErrorTitle] = "エラーが発生しました",
+                [Strings.ErrorBody] = "リクエスト処理中にエラーが発生しました。チームに通知済みです。",
+                [Strings.ErrorCtaHome] = "トップへ戻る",
+                [Strings.ErrorConnectionLost] = "接続が切れました。再接続中…",
             },
             ["ko"] = new Dictionary<string, string>
             {
@@ -581,6 +671,12 @@ public static class DefaultStrings
                 [Strings.TgRefundNotFound] = "결제 {0}을(를) 찾을 수 없어요.",
                 [Strings.TgRefundUsage] = "사용법: /refund <telegram_payment_charge_id>",
                 [Strings.TgRefundAlready] = "{0}은(는) 이미 환불되었어요.",
+                [Strings.SeoDescription] = "어려운 결정을 풀어요. 고전적인 데카르트 사분면 — 네 가지 성찰 질문 — 을 AI가 당신의 언어로 정리합니다.",
+                [Strings.SeoOgImageAlt] = "DecisionHelper — AI 데카르트 사분면",
+                [Strings.ErrorTitle] = "문제가 발생했어요",
+                [Strings.ErrorBody] = "요청을 처리하는 중에 오류가 발생했어요. 팀에 알림이 갔어요.",
+                [Strings.ErrorCtaHome] = "홈으로",
+                [Strings.ErrorConnectionLost] = "연결이 끊겼어요. 다시 연결 중…",
             },
             ["vi"] = new Dictionary<string, string>
             {
@@ -617,6 +713,12 @@ public static class DefaultStrings
                 [Strings.TgRefundNotFound] = "Không tìm thấy thanh toán {0}.",
                 [Strings.TgRefundUsage] = "Cách dùng: /refund <telegram_payment_charge_id>",
                 [Strings.TgRefundAlready] = "{0} đã được hoàn tiền trước đó.",
+                [Strings.SeoDescription] = "Thoát khỏi quyết định khó. Hình vuông Descartes kinh điển — bốn câu hỏi phản tư — được AI cấu trúc bằng ngôn ngữ của bạn.",
+                [Strings.SeoOgImageAlt] = "DecisionHelper — Hình vuông Descartes với AI",
+                [Strings.ErrorTitle] = "Có lỗi xảy ra",
+                [Strings.ErrorBody] = "Đã xảy ra lỗi khi xử lý yêu cầu của bạn. Đội ngũ đã được thông báo.",
+                [Strings.ErrorCtaHome] = "Về trang chủ",
+                [Strings.ErrorConnectionLost] = "Mất kết nối. Đang kết nối lại…",
             },
             ["id"] = new Dictionary<string, string>
             {
@@ -653,6 +755,12 @@ public static class DefaultStrings
                 [Strings.TgRefundNotFound] = "Pembayaran {0} tidak ditemukan.",
                 [Strings.TgRefundUsage] = "Penggunaan: /refund <telegram_payment_charge_id>",
                 [Strings.TgRefundAlready] = "Pembayaran {0} sudah dikembalikan.",
+                [Strings.SeoDescription] = "Keluar dari keputusan sulit. Kuadran Descartes klasik — empat pertanyaan reflektif — distrukturkan oleh AI dalam bahasamu.",
+                [Strings.SeoOgImageAlt] = "DecisionHelper — Kuadran Descartes dengan AI",
+                [Strings.ErrorTitle] = "Terjadi kesalahan",
+                [Strings.ErrorBody] = "Terjadi kesalahan saat memproses permintaanmu. Tim telah diberi tahu.",
+                [Strings.ErrorCtaHome] = "Kembali ke beranda",
+                [Strings.ErrorConnectionLost] = "Koneksi terputus. Menyambung ulang…",
             },
             ["fa"] = new Dictionary<string, string>
             {
@@ -689,6 +797,12 @@ public static class DefaultStrings
                 [Strings.TgRefundNotFound] = "پرداخت {0} پیدا نشد.",
                 [Strings.TgRefundUsage] = "استفاده: /refund <telegram_payment_charge_id>",
                 [Strings.TgRefundAlready] = "{0} پیشتر بازپرداخت شده است.",
+                [Strings.SeoDescription] = "از یک تصمیم دشوار بیرون بیا. مربع کلاسیک دکارت — چهار پرسش تأمل‌برانگیز — به زبان تو با هوش مصنوعی ساختاردهی می‌شود.",
+                [Strings.SeoOgImageAlt] = "DecisionHelper — مربع دکارت با هوش مصنوعی",
+                [Strings.ErrorTitle] = "مشکلی پیش آمد",
+                [Strings.ErrorBody] = "هنگام پردازش درخواست خطا رخ داد. تیم مطلع شد.",
+                [Strings.ErrorCtaHome] = "بازگشت به صفحه اصلی",
+                [Strings.ErrorConnectionLost] = "اتصال قطع شد. در حال اتصال مجدد…",
             },
             ["nl"] = new Dictionary<string, string>
             {
@@ -725,6 +839,12 @@ public static class DefaultStrings
                 [Strings.TgRefundNotFound] = "Betaling {0} niet gevonden.",
                 [Strings.TgRefundUsage] = "Gebruik: /refund <telegram_payment_charge_id>",
                 [Strings.TgRefundAlready] = "Betaling {0} is al terugbetaald.",
+                [Strings.SeoDescription] = "Kom los uit een moeilijke beslissing. Het klassieke Cartesiaanse Vierkant — vier reflectieve vragen — gestructureerd door AI in jouw taal.",
+                [Strings.SeoOgImageAlt] = "DecisionHelper — Cartesiaans Vierkant met AI",
+                [Strings.ErrorTitle] = "Er ging iets mis",
+                [Strings.ErrorBody] = "Er trad een fout op bij het verwerken van je verzoek. Het team is op de hoogte gebracht.",
+                [Strings.ErrorCtaHome] = "Terug naar de startpagina",
+                [Strings.ErrorConnectionLost] = "Verbinding verbroken. Opnieuw verbinden…",
             },
             ["sv"] = new Dictionary<string, string>
             {
@@ -761,6 +881,12 @@ public static class DefaultStrings
                 [Strings.TgRefundNotFound] = "Betalning {0} hittades inte.",
                 [Strings.TgRefundUsage] = "Användning: /refund <telegram_payment_charge_id>",
                 [Strings.TgRefundAlready] = "Betalning {0} har redan återbetalats.",
+                [Strings.SeoDescription] = "Bryt vacklandet i ett svårt beslut. Den klassiska Cartesianska kvadraten — fyra reflekterande frågor — strukturerad av AI på ditt språk.",
+                [Strings.SeoOgImageAlt] = "DecisionHelper — Cartesiansk kvadrat med AI",
+                [Strings.ErrorTitle] = "Något gick fel",
+                [Strings.ErrorBody] = "Ett fel uppstod när din förfrågan behandlades. Teamet har meddelats.",
+                [Strings.ErrorCtaHome] = "Tillbaka till start",
+                [Strings.ErrorConnectionLost] = "Anslutningen bröts. Återansluter…",
             },
         };
 }
