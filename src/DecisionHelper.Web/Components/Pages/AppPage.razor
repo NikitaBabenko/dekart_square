@@ -18,10 +18,36 @@
               class="w-full border border-zinc-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-zinc-900"
               placeholder="@T[Strings.DilemmaPlaceholder, CurrentUser.Locale]"></textarea>
 
-    <div class="mt-3 flex items-center gap-3">
+    <fieldset class="mt-3 flex flex-col sm:flex-row gap-2 sm:gap-4 text-sm">
+        <label class="inline-flex items-center gap-2 cursor-pointer">
+            <input type="radio" name="mode" value="ai" checked="@(_mode == Mode.Ai)" @onchange="() => _mode = Mode.Ai" />
+            @T[Strings.ModeAi, CurrentUser.Locale]
+        </label>
+        <label class="inline-flex items-center gap-2 cursor-pointer">
+            <input type="radio" name="mode" value="manual" checked="@(_mode == Mode.Manual)" @onchange="() => _mode = Mode.Manual" />
+            @T[Strings.ModeManual, CurrentUser.Locale]
+        </label>
+    </fieldset>
+
+    @if (_mode == Mode.Manual)
+    {
+        <p class="mt-3 text-xs text-zinc-500">@T[Strings.ManualHint, CurrentUser.Locale]</p>
+        <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <ManualQuadrant Title="@T[Strings.Q1Title, CurrentUser.Locale]" Tone="emerald" @bind-Value="_q1" />
+            <ManualQuadrant Title="@T[Strings.Q2Title, CurrentUser.Locale]" Tone="rose" @bind-Value="_q2" />
+            <ManualQuadrant Title="@T[Strings.Q3Title, CurrentUser.Locale]" Tone="emerald" @bind-Value="_q3" />
+            <ManualQuadrant Title="@T[Strings.Q4Title, CurrentUser.Locale]" Tone="rose" @bind-Value="_q4" />
+        </div>
+    }
+
+    <div class="mt-4 flex items-center gap-3">
         <button @onclick="Submit" disabled="@_busy"
                 class="bg-zinc-900 text-white px-5 py-2 rounded-md disabled:opacity-50 hover:bg-zinc-800">
-            @(_busy ? T[Strings.Working, CurrentUser.Locale] : T[Strings.DilemmaSubmit, CurrentUser.Locale])
+            @(_busy
+                ? T[Strings.Working, CurrentUser.Locale]
+                : (_mode == Mode.Manual
+                    ? T[Strings.ManualSubmit, CurrentUser.Locale]
+                    : T[Strings.DilemmaSubmit, CurrentUser.Locale]))
         </button>
         @if (_error is not null)
         {
@@ -56,7 +82,15 @@
 </div>
 
 @code {
+    private enum Mode { Ai, Manual }
+
     private string _dilemma = string.Empty;
+    private Mode _mode = Mode.Ai;
+    private string _q1 = string.Empty;
+    private string _q2 = string.Empty;
+    private string _q3 = string.Empty;
+    private string _q4 = string.Empty;
+
     private bool _busy;
     private string? _error;
     private DecartesSquare? _square;
@@ -75,7 +109,13 @@
         try
         {
             var user = await CurrentUser.GetOrCreateAsync(default);
-            var outcome = await Decisions.AnalyzeAsync(user, _dilemma.Trim(), CurrentUser.Locale, default);
+            SquareOutcome outcome = _mode == Mode.Manual
+                ? await Decisions.SynthesizeAsync(
+                    user, _dilemma.Trim(),
+                    SplitLines(_q1), SplitLines(_q2), SplitLines(_q3), SplitLines(_q4),
+                    CurrentUser.Locale, default)
+                : await Decisions.AnalyzeAsync(user, _dilemma.Trim(), CurrentUser.Locale, default);
+
             if (!outcome.Allowed || outcome.Square is null)
             {
                 _error = outcome.ErrorMessage;
@@ -90,5 +130,11 @@
         {
             _busy = false;
         }
+    }
+
+    private static IReadOnlyList<string> SplitLines(string raw)
+    {
+        if (string.IsNullOrWhiteSpace(raw)) return Array.Empty<string>();
+        return raw.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
     }
 }

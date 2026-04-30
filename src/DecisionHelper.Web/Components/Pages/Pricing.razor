@@ -3,14 +3,34 @@
 @using DecisionHelper.Web.Auth
 @inject ICurrentUserAccessor CurrentUser
 @inject IStringResolver T
+@inject Microsoft.Extensions.Options.IOptions<AppOptions> AppOpts
 
 <PageTitle>Premium · DecisionHelper</PageTitle>
+
+@{
+    var botUsername = AppOpts.Value.TelegramBotUsername;
+    var botUrl = string.IsNullOrEmpty(botUsername) ? "https://t.me/" : $"https://t.me/{botUsername}";
+    var botConfigured = !string.IsNullOrEmpty(botUsername);
+}
 
 <section class="py-10 max-w-md mx-auto">
     <h1 class="text-2xl font-bold mb-3">Premium</h1>
     <p class="text-zinc-600 mb-6">@T[Strings.PremiumDescription, CurrentUser.Locale]</p>
-    <a href="https://t.me/" class="inline-block bg-zinc-900 text-white px-5 py-2 rounded-md hover:bg-zinc-800">
-        @T[Strings.CtaPremium, CurrentUser.Locale]
-    </a>
+
+    @if (botConfigured)
+    {
+        <a href="@botUrl" target="_blank" rel="noopener"
+           class="inline-block bg-zinc-900 text-white px-5 py-2 rounded-md hover:bg-zinc-800">
+            @T[Strings.CtaPremium, CurrentUser.Locale]
+        </a>
+        <p class="text-xs text-zinc-500 mt-3">@@@botUsername</p>
+    }
+    else
+    {
+        <span class="inline-block bg-zinc-300 text-zinc-600 px-5 py-2 rounded-md cursor-not-allowed"
+              title="TELEGRAM_BOT_USERNAME is not configured">
+            @T[Strings.CtaPremium, CurrentUser.Locale]
+        </span>
+    }
     <p class="text-xs text-zinc-500 mt-3">Stars payments are processed in the Telegram bot.</p>
 </section>

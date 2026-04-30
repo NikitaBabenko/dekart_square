@@ -1,0 +1,18 @@
+@code {
+    [Parameter, EditorRequired] public string Title { get; set; } = string.Empty;
+    [Parameter] public string Tone { get; set; } = "zinc";
+    [Parameter] public string Value { get; set; } = string.Empty;
+    [Parameter] public EventCallback<string> ValueChanged { get; set; }
+
+    private async Task OnInput(ChangeEventArgs e)
+    {
+        Value = e.Value?.ToString() ?? string.Empty;
+        await ValueChanged.InvokeAsync(Value);
+    }
+}
+
+<div class="border border-zinc-200 rounded-lg p-3 bg-white">
+    <h3 class="font-semibold text-sm mb-2 text-@Tone-700">@Title</h3>
+    <textarea rows="4" value="@Value" @oninput="OnInput"
+              class="w-full text-sm border border-zinc-200 rounded p-2 focus:outline-none focus:ring-1 focus:ring-zinc-900 resize-none"></textarea>
+</div>

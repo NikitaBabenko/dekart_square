@@ -52,6 +52,37 @@ public sealed class DecisionService
         }
     }
 
+    public async Task<SquareOutcome> SynthesizeAsync(
+        User user,
+        string dilemma,
+        IReadOnlyList<string> prosOfDoing,
+        IReadOnlyList<string> consOfDoing,
+        IReadOnlyList<string> prosOfNotDoing,
+        IReadOnlyList<string> consOfNotDoing,
+        string locale,
+        CancellationToken ct)
+    {
+        var now = DateTimeOffset.UtcNow;
+        var limit = await _limiter.TryConsumeAsync(user, now, ct);
+        if (!limit.Allowed)
+        {
+            return new SquareOutcome(false, null, limit, BuildLimitMessage(user, limit, locale, now));
+        }
+
+        try
+        {
+            var square = await _ai.SynthesizeFromUserInputAsync(
+                dilemma, prosOfDoing, consOfDoing, prosOfNotDoing, consOfNotDoing, locale, ct);
+            await _sessions.SaveAsync(user.Id, dilemma, square, locale, ct);
+            return new SquareOutcome(true, square, limit);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "AI synthesis failed for user {UserId}", user.Id);
+            return new SquareOutcome(true, null, limit, _strings[Strings.TgError, locale]);
+        }
+    }
+
     private string BuildLimitMessage(User user, LimitCheckResult limit, string locale, DateTimeOffset now)
     {
         var policy = LimitPolicy.Default;

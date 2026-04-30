@@ -3,6 +3,7 @@ namespace DecisionHelper.Web.Auth;
 public sealed class AppOptions
 {
     public string TelegramBotToken { get; set; } = string.Empty;
+    public string TelegramBotUsername { get; set; } = string.Empty;
     public string TelegramWebhookSecret { get; set; } = string.Empty;
     public bool TelegramUsePolling { get; set; }
     public string AppBaseUrl { get; set; } = string.Empty;

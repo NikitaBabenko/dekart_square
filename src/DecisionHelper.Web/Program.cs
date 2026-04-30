@@ -23,6 +23,7 @@ builder.Services.AddHttpContextAccessor();
 var appOptions = new AppOptions
 {
     TelegramBotToken = builder.Configuration["TELEGRAM_BOT_TOKEN"] ?? string.Empty,
+    TelegramBotUsername = (builder.Configuration["TELEGRAM_BOT_USERNAME"] ?? string.Empty).TrimStart('@'),
     TelegramWebhookSecret = builder.Configuration["TELEGRAM_WEBHOOK_SECRET"] ?? string.Empty,
     TelegramUsePolling = bool.TryParse(builder.Configuration["TELEGRAM_USE_POLLING"], out var poll) && poll,
     AppBaseUrl = builder.Configuration["APP_BASE_URL"] ?? string.Empty,
@@ -33,6 +34,7 @@ var appOptions = new AppOptions
 builder.Services.Configure<AppOptions>(o =>
 {
     o.TelegramBotToken = appOptions.TelegramBotToken;
+    o.TelegramBotUsername = appOptions.TelegramBotUsername;
     o.TelegramWebhookSecret = appOptions.TelegramWebhookSecret;
     o.TelegramUsePolling = appOptions.TelegramUsePolling;
     o.AppBaseUrl = appOptions.AppBaseUrl;
