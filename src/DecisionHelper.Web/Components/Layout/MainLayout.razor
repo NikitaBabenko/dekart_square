@@ -29,7 +29,8 @@
     </footer>
 </div>
 
-<div id="blazor-error-ui" data-nosnippet class="hidden">
-    An unhandled error has occurred.
-    <a href="." class="underline">Reload</a>
+<div id="blazor-error-ui" data-nosnippet
+     class="fixed bottom-0 inset-x-0 bg-rose-700 text-white px-4 py-3 text-sm flex items-center justify-between shadow-lg">
+    <span>@T[Strings.ErrorConnectionLost, CurrentUser.Locale]</span>
+    <a href="." class="underline ml-4">@T[Strings.ErrorCtaHome, CurrentUser.Locale]</a>
 </div>
