@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide the default blazor-error-ui banner unless we explicitly show it. */
+#blazor-error-ui {
+  display: none;
+}

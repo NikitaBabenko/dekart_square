@@ -35,12 +35,21 @@ For the Telegram bot to receive webhooks, `APP_BASE_URL` must be a public HTTPS 
 ## Quickstart (without Docker)
 
 ```bash
+# 1. Build the Tailwind CSS (one-time, or use `npm run watch:css` during development)
+cd src/DecisionHelper.Web
+npm install
+npm run build:css
+cd ../..
+
+# 2. Build, test, run
 dotnet build
 dotnet test
 dotnet run --project src/DecisionHelper.Web
 ```
 
 You still need a running Postgres reachable via `POSTGRES_*` env vars (or change `BuildPgConnectionString` to point at `localhost`).
+
+When using Docker (`docker compose up --build`), the Tailwind build runs inside the image — no local Node setup needed.
 
 ## Limits
 

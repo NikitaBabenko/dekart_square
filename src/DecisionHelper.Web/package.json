@@ -1,0 +1,13 @@
+{
+  "name": "decisionhelper-web",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Tailwind build for DecisionHelper.Web",
+  "scripts": {
+    "build:css": "tailwindcss -i ./Styles/app.css -o ./wwwroot/app.css --minify",
+    "watch:css": "tailwindcss -i ./Styles/app.css -o ./wwwroot/app.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
