@@ -20,7 +20,7 @@ RUN dotnet restore src/DecisionHelper.Web/DecisionHelper.Web.csproj
 
 COPY . .
 # Inject the Tailwind output produced by the css stage.
-COPY --from=css /web/wwwroot/app.css src/DecisionHelper.Web/wwwroot/app.css
+COPY --from=css /web/wwwroot/dh-app.css src/DecisionHelper.Web/wwwroot/dh-app.css
 
 RUN dotnet publish src/DecisionHelper.Web/DecisionHelper.Web.csproj \
     -c Release -o /app/publish \

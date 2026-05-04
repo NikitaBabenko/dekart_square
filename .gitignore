@@ -21,7 +21,7 @@ node_modules/
 dist/
 
 # Tailwind output (generated)
-src/DecisionHelper.Web/wwwroot/app.css
+src/DecisionHelper.Web/wwwroot/dh-app.css
 
 # Test results
 [Tt]est[Rr]esult*/
