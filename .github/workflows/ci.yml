@@ -38,6 +38,24 @@ jobs:
           npm ci --no-audit --no-fund
           npm run build:css
 
+      - name: Verify Tailwind output contains classes used in code
+        working-directory: src/DecisionHelper.Web
+        run: |
+          css=wwwroot/app.css
+          size=$(wc -c < "$css")
+          echo "app.css size: $size bytes"
+          if [ "$size" -lt 3000 ] || [ "$size" -gt 100000 ]; then
+            echo "::error::app.css size $size out of expected range (3 KB – 100 KB). Likely a Tailwind purge/config regression."
+            exit 1
+          fi
+          required="bg-zinc-900 bg-zinc-50 text-white text-emerald-700 text-rose-700"
+          for cls in $required; do
+            if ! grep -q "\.$cls" "$css"; then
+              echo "::error::app.css is missing required class .$cls — buttons/styles will render invisibly in production."
+              exit 1
+            fi
+          done
+
       - name: Restore .NET
         run: dotnet restore
 
