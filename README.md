@@ -66,9 +66,9 @@ When using Docker (`docker compose up --build`), the Tailwind build runs inside 
 ## Project layout
 
 ```
-src/DecisionHelper.Core/             # Domain, AI client, limits, locales
-src/DecisionHelper.Infrastructure/   # EF Core, migrations, repositories
-src/DecisionHelper.Web/              # Blazor Web App + bot webhook + endpoints
+src/DecisionHelper.Web/              # Blazor Web App + bot webhook + endpoints,
+                                     # domain, AI client, EF Core, migrations,
+                                     # repositories, limits, locales
 tests/DecisionHelper.Tests/          # xUnit
 ```
 
