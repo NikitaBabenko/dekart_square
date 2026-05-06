@@ -13,8 +13,6 @@ RUN npm run build:css
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
-COPY src/DecisionHelper.Core/DecisionHelper.Core.csproj src/DecisionHelper.Core/
-COPY src/DecisionHelper.Infrastructure/DecisionHelper.Infrastructure.csproj src/DecisionHelper.Infrastructure/
 COPY src/DecisionHelper.Web/DecisionHelper.Web.csproj src/DecisionHelper.Web/
 RUN dotnet restore src/DecisionHelper.Web/DecisionHelper.Web.csproj
 

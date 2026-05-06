@@ -21,8 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\DecisionHelper.Core\DecisionHelper.Core.csproj" />
-    <ProjectReference Include="..\..\src\DecisionHelper.Infrastructure\DecisionHelper.Infrastructure.csproj" />
     <ProjectReference Include="..\..\src\DecisionHelper.Web\DecisionHelper.Web.csproj" />
   </ItemGroup>
 
