@@ -10,7 +10,7 @@ One deployment serves three entry points:
 
 ## Stack
 
-- .NET 9 + Blazor Web App (SSR + Interactive Server) + Tailwind (via CDN for now)
+- .NET 8 + Blazor Web App (SSR + Interactive Server) + Tailwind (via CDN for now)
 - PostgreSQL 16 + EF Core (migrations applied on startup)
 - Telegram.Bot 22 (webhook by default; long-polling toggle for dev)
 - OpenRouter via `HttpClient` (model configured via env)
